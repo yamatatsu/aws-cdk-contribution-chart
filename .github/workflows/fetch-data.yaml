@@ -6,7 +6,7 @@ on:
 
 jobs:
   fetch-and-commit:
-    permissions: write-all
+    # permissions: write-all
     # permissions:
     #   contents: read
     #   pull-requests: read
@@ -25,5 +25,12 @@ jobs:
 
       - name: Commit
         run: |
-          git commit -am 'fetch data'
-          git push
+          git add -N .
+          if ! git diff --exit-code --quiet
+          then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .
+            git commit -m "chore: fetch data"
+            git push
+          fi
