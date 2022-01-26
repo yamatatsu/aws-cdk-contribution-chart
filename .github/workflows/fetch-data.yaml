@@ -6,7 +6,7 @@ on:
 
 jobs:
   fetch-and-commit:
-    permissions: read-all|write-all
+    permissions: write-all
     # permissions:
     #   contents: read
     #   pull-requests: read
