@@ -1,6 +1,15 @@
 ## Usage
 
-call following on a regular basis, and commit.
+### Development
+
 ```sh
-./fetch_data.ts
+npm run dev
+```
+
+### Fetch Data
+
+call following on a regular basis, and commit.
+
+```sh
+npm run fetchData
 ```
