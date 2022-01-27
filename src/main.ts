@@ -7,7 +7,7 @@ console.log("data", allData);
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-let root = am5.Root.new("chartdiv");
+const root = am5.Root.new("chartdiv");
 
 root.numberFormatter.setAll({
   numberFormat: "#a",
@@ -22,7 +22,7 @@ root.numberFormatter.setAll({
   smallNumberPrefixes: [],
 });
 
-let stepDuration = 2000;
+const stepDuration = 2000;
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
@@ -30,7 +30,7 @@ root.setThemes([am5.Theme.new(root)]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
-let chart = root.container.children.push(
+const chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: true,
     panY: true,
@@ -44,14 +44,14 @@ chart.zoomOutButton.set("forceHidden", true);
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-let yRenderer = am5xy.AxisRendererY.new(root, {
+const yRenderer = am5xy.AxisRendererY.new(root, {
   minGridDistance: 20,
   inversed: true,
 });
 // hide grid
 yRenderer.grid.template.set("visible", false);
 
-let yAxis = chart.yAxes.push(
+const yAxis = chart.yAxes.push(
   am5xy.CategoryAxis.new(root, {
     maxDeviation: 0,
     categoryField: "network",
@@ -59,7 +59,7 @@ let yAxis = chart.yAxes.push(
   })
 );
 
-let xAxis = chart.xAxes.push(
+const xAxis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     maxDeviation: 0,
     min: 0,
@@ -74,7 +74,7 @@ xAxis.set("interpolationEasing", am5.ease.linear);
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-let series = chart.series.push(
+const series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     xAxis: xAxis,
     yAxis: yAxis,
@@ -114,7 +114,7 @@ series.bullets.push(function () {
   });
 });
 
-let label = chart.plotContainer.children.push(
+const label = chart.plotContainer.children.push(
   am5.Label.new(root, {
     text: "2002",
     fontSize: "8em",
@@ -181,7 +181,7 @@ function sortCategoryAxis() {
 let year = 2002;
 
 // update data with values each 1.5 sec
-let interval = setInterval(function () {
+const interval = setInterval(function () {
   year++;
 
   if (year > 2018) {
@@ -192,7 +192,7 @@ let interval = setInterval(function () {
   updateData();
 }, stepDuration);
 
-let sortInterval = setInterval(function () {
+const sortInterval = setInterval(function () {
   sortCategoryAxis();
 }, 100);
 
