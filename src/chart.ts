@@ -92,18 +92,18 @@ export default class Chart {
     });
 
     // Make each column to be of a different color
-    series.columns.template.adapters.add("fill", function (fill, target) {
+    series.columns.template.adapters.add("fill", (fill, target) => {
       // @ts-expect-error
       return chart.get("colors")?.getIndex(series.columns.indexOf(target));
     });
 
-    series.columns.template.adapters.add("stroke", function (stroke, target) {
+    series.columns.template.adapters.add("stroke", (stroke, target) => {
       // @ts-expect-error
       return chart.get("colors")?.getIndex(series.columns.indexOf(target));
     });
 
     // Add label bullet
-    series.bullets.push(function () {
+    series.bullets.push(() => {
       return am5.Bullet.new(root, {
         locationX: 1,
         sprite: am5.Label.new(root, {
@@ -144,15 +144,15 @@ export default class Chart {
     // go through each axis item
     am5.array.each(this.yAxis.dataItems, (dataItem) => {
       // get corresponding series item
-      let seriesDataItem = this.series.dataItems.find(
+      const seriesDataItem = this.series.dataItems.find(
         (item) => item.get("categoryY") === dataItem.get("category")
       );
 
       if (seriesDataItem) {
         // get index of series data item
-        let index = this.series.dataItems.indexOf(seriesDataItem);
+        const index = this.series.dataItems.indexOf(seriesDataItem);
         // calculate delta position
-        let deltaPosition =
+        const deltaPosition =
           (index - dataItem.get("index", 0)) / this.series.dataItems.length;
         // set index to be the same as series data item index
         if (dataItem.get("index") != index) {
@@ -171,7 +171,7 @@ export default class Chart {
     });
     // sort axis items by index.
     // This changes the order instantly, but as deltaPosition is set, they keep in the same places and then animate to true positions.
-    this.yAxis.dataItems.sort(function (x, y) {
+    this.yAxis.dataItems.sort((x, y) => {
       return (x.get("index") ?? 0) - (y.get("index") ?? 0);
     });
   }
@@ -183,15 +183,15 @@ export default class Chart {
     }
   }
 
-  public updateData(year: number, data: Record<string, number>) {
+  public updateData(year: string, data: Record<string, number>) {
     let itemsWithNonZero = 0;
 
     if (data) {
-      this.label.set("text", year.toString());
+      this.label.set("text", year);
 
       am5.array.each(this.series.dataItems, (dataItem) => {
-        let category = dataItem.get("categoryY") ?? "";
-        let value = data[category];
+        const category = dataItem.get("categoryY") ?? "";
+        const value = data[category];
 
         if (value > 0) {
           itemsWithNonZero++;
