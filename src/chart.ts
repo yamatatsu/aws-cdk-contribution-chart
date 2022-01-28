@@ -137,8 +137,7 @@ export default class Chart {
   public sortCategoryAxis() {
     // sort by value
     this.series.dataItems.sort((x, y) => {
-      return (y.get("valueX") ?? 0) - (x.get("valueX") ?? 0); // descending
-      //return x.get("valueX") - y.get("valueX"); // ascending
+      return (y.get("valueX") ?? 0) - (x.get("valueX") ?? 0);
     });
 
     // go through each axis item
@@ -147,27 +146,27 @@ export default class Chart {
       const seriesDataItem = this.series.dataItems.find(
         (item) => item.get("categoryY") === dataItem.get("category")
       );
+      if (!seriesDataItem) return;
 
-      if (seriesDataItem) {
-        // get index of series data item
-        const index = this.series.dataItems.indexOf(seriesDataItem);
-        // calculate delta position
-        const deltaPosition =
-          (index - dataItem.get("index", 0)) / this.series.dataItems.length;
-        // set index to be the same as series data item index
-        if (dataItem.get("index") != index) {
-          dataItem.set("index", index);
-          // set deltaPosition instanlty
-          dataItem.set("deltaPosition", -deltaPosition);
-          // animate delta position to 0
-          dataItem.animate({
-            key: "deltaPosition",
-            to: 0,
-            duration: this.stepDuration / 2,
-            easing: am5.ease.out(am5.ease.cubic),
-          });
-        }
-      }
+      // get index of series data item
+      const index = this.series.dataItems.indexOf(seriesDataItem);
+      if (dataItem.get("index") === index) return;
+
+      // calculate delta position
+      const deltaPosition =
+        (index - dataItem.get("index", 0)) / this.series.dataItems.length;
+
+      // set index to be the same as series data item index
+      dataItem.set("index", index);
+      // set deltaPosition instanlty
+      dataItem.set("deltaPosition", -deltaPosition);
+      // animate delta position to 0
+      dataItem.animate({
+        key: "deltaPosition",
+        to: 0,
+        duration: this.stepDuration / 2,
+        easing: am5.ease.out(am5.ease.cubic),
+      });
     });
     // sort axis items by index.
     // This changes the order instantly, but as deltaPosition is set, they keep in the same places and then animate to true positions.
@@ -177,42 +176,40 @@ export default class Chart {
   }
 
   public setInitialData(data: Record<string, number>) {
-    for (var n in data) {
-      this.series.data.push({ network: n, value: data[n] });
-      this.yAxis.data.push({ network: n });
-    }
+    Object.entries(data).forEach(([name, value]) => {
+      this.series.data.push({ network: name, value });
+      this.yAxis.data.push({ network: name });
+    });
   }
 
   public updateData(year: string, data: Record<string, number>) {
     let itemsWithNonZero = 0;
 
-    if (data) {
-      this.label.set("text", year);
+    this.label.set("text", year);
 
-      am5.array.each(this.series.dataItems, (dataItem) => {
-        const category = dataItem.get("categoryY") ?? "";
-        const value = data[category];
+    am5.array.each(this.series.dataItems, (dataItem) => {
+      const category = dataItem.get("categoryY") ?? "";
+      const value = data[category];
 
-        if (value > 0) {
-          itemsWithNonZero++;
-        }
+      if (value > 0) {
+        itemsWithNonZero++;
+      }
 
-        dataItem.animate({
-          key: "valueX",
-          to: value,
-          duration: this.stepDuration,
-          easing: am5.ease.linear,
-        });
-        dataItem.animate({
-          key: "valueXWorking",
-          to: value,
-          duration: this.stepDuration,
-          easing: am5.ease.linear,
-        });
+      dataItem.animate({
+        key: "valueX",
+        to: value,
+        duration: this.stepDuration,
+        easing: am5.ease.linear,
       });
+      dataItem.animate({
+        key: "valueXWorking",
+        to: value,
+        duration: this.stepDuration,
+        easing: am5.ease.linear,
+      });
+    });
 
-      this.yAxis.zoom(0, itemsWithNonZero / this.yAxis.dataItems.length);
-    }
+    this.yAxis.zoom(0, itemsWithNonZero / this.yAxis.dataItems.length);
   }
 
   public appear() {
