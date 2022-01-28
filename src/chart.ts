@@ -92,12 +92,12 @@ export default class Chart {
     });
 
     // Make each column to be of a different color
-    series.columns.template.adapters.add("fill", (fill, target) => {
+    series.columns.template.adapters.add("fill", (_, target) => {
       // @ts-expect-error
       return chart.get("colors")?.getIndex(series.columns.indexOf(target));
     });
 
-    series.columns.template.adapters.add("stroke", (stroke, target) => {
+    series.columns.template.adapters.add("stroke", (_, target) => {
       // @ts-expect-error
       return chart.get("colors")?.getIndex(series.columns.indexOf(target));
     });
