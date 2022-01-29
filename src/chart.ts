@@ -184,8 +184,8 @@ export default class Chart {
     });
   }
 
-  public updateDate(year: string) {
-    this.label.set("text", year);
+  public updateDate(ymd: string) {
+    this.label.set("text", ymd);
   }
 
   public update(data: Record<string, number>) {

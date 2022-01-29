@@ -8,8 +8,8 @@ const fetchResult = await fetch("./data.json");
 const allData = await fetchResult.json();
 
 function* generateIterator(_data: Record<string, Record<string, number>>) {
-  for (const [yearStr, rank] of Object.entries(_data)) {
-    yield [yearStr, rank] as const;
+  for (const [ymd, rank] of Object.entries(_data)) {
+    yield [ymd, rank] as const;
   }
 }
 
@@ -27,9 +27,9 @@ const interval = setInterval(function () {
     return;
   }
 
-  const [year, rank] = iteratorResult.value;
+  const [ymd, rank] = iteratorResult.value;
 
-  chart.updateDate(year);
+  chart.updateDate(ymd);
   chart.update(rank);
 }, stepDuration);
 
@@ -49,8 +49,8 @@ setTimeout(function () {
   if (result.done) {
     throw new Error("The data has only one record.");
   }
-  const [year, rank] = result.value;
-  chart.updateDate(year);
+  const [ymd, rank] = result.value;
+  chart.updateDate(ymd);
   chart.update(rank);
 }, 50);
 
