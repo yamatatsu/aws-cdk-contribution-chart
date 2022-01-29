@@ -111,7 +111,7 @@ export default class Chart {
         locationX: 1,
         sprite: am5.Label.new(root, {
           text: "{valueXWorking.formatNumber('#.')}",
-          fill: am5.Color.fromString("black"),
+          fill: am5.Color.fromRGB(100, 100, 100),
           centerX: am5.p0,
           centerY: am5.p50,
           populateText: true,
