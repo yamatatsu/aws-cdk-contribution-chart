@@ -44,5 +44,9 @@ async function concatFiles(files: string[]) {
 }
 
 async function writeJson(output: Output) {
-  await $`echo ${JSON.stringify(output, null, 2)} > ${BASE_DIR}/data.json`;
+  await $`echo ${JSON.stringify(
+    output,
+    null,
+    2
+  )} > ${BASE_DIR}/public/data.json`;
 }
