@@ -4,7 +4,7 @@ import Chart from "./chart";
 
 const stepDuration = 1000;
 
-const fetchResult = await fetch("/data.json");
+const fetchResult = await fetch("./data.json");
 const allData = await fetchResult.json();
 
 function* generateIterator(_data: Record<string, Record<string, number>>) {

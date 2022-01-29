@@ -1,4 +1,4 @@
-name: Fetch Data
+name: Daily Batch
 on:
   schedule:
     - cron: "0 0 * * *"
@@ -33,3 +33,9 @@ jobs:
             git commit -m "chore: fetch data"
             git push
           fi
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        run: npx npx gh-pages -d dist
