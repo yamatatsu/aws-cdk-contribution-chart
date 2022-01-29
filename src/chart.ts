@@ -184,12 +184,18 @@ export default class Chart {
     });
   }
 
-  public updateData(year: string, data: Record<string, number>) {
+  public updateDate(year: string) {
     this.label.set("text", year);
+  }
 
+  public update(data: Record<string, number>) {
     am5.array.each(this.series.dataItems, (dataItem) => {
       const category = dataItem.get("categoryY") ?? "";
       const value = data[category];
+
+      if (!value) {
+        return;
+      }
 
       dataItem.animate({
         key: "valueX",

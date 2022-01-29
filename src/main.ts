@@ -2,7 +2,7 @@ import "./style.css";
 // import allData from "./mock-data";
 import Chart from "./chart";
 
-const stepDuration = 2000;
+const stepDuration = 1000;
 
 const fetchResult = await fetch("/data.json");
 const allData = await fetchResult.json();
@@ -29,7 +29,8 @@ const interval = setInterval(function () {
 
   const [year, rank] = iteratorResult.value;
 
-  chart.updateData(year, rank);
+  chart.updateDate(year);
+  chart.update(rank);
 }, stepDuration);
 
 const sortInterval = setInterval(function () {
@@ -49,7 +50,8 @@ setTimeout(function () {
     throw new Error("The data has only one record.");
   }
   const [year, rank] = result.value;
-  chart.updateData(year, rank);
+  chart.updateDate(year);
+  chart.update(rank);
 }, 50);
 
 chart.appear();
