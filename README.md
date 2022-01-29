@@ -1,6 +1,6 @@
 ## Motivation
 
-This is for just only keeping my own motivation to contribute AWS CDK. There are no other significances. I think all contributions should be respected However small or few. And it is not to compete.
+This is for just only keeping my own motivation to contribute AWS CDK. There are no other significances. I think all contributions should be respected however small or few. And it is not to compete.
 
 ## Site
 
