@@ -1,6 +1,8 @@
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 
+const TOP_N = 100;
+
 export default class Chart {
   private readonly chart: am5xy.XYChart;
   private readonly series: am5xy.ColumnSeries;
@@ -31,6 +33,7 @@ export default class Chart {
     // https://www.amcharts.com/docs/v5/charts/xy-chart/
     const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
+        paddingTop: 0,
         panX: true,
         panY: true,
         wheelX: "none",
@@ -44,7 +47,7 @@ export default class Chart {
     // Create axes
     // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
     const yRenderer = am5xy.AxisRendererY.new(root, {
-      minGridDistance: 20,
+      minGridDistance: 10,
       inversed: true,
     });
     // hide grid
@@ -107,7 +110,7 @@ export default class Chart {
       return am5.Bullet.new(root, {
         locationX: 1,
         sprite: am5.Label.new(root, {
-          text: "{valueXWorking.formatNumber('#.# a')}",
+          text: "{valueXWorking.formatNumber('#.')}",
           fill: root.interfaceColors.get("alternativeText"),
           centerX: am5.p100,
           centerY: am5.p50,
@@ -118,7 +121,6 @@ export default class Chart {
 
     const label = chart.plotContainer.children.push(
       am5.Label.new(root, {
-        text: "2002",
         fontSize: "8em",
         opacity: 0.2,
         x: am5.p100,
@@ -183,17 +185,11 @@ export default class Chart {
   }
 
   public updateData(year: string, data: Record<string, number>) {
-    let itemsWithNonZero = 0;
-
     this.label.set("text", year);
 
     am5.array.each(this.series.dataItems, (dataItem) => {
       const category = dataItem.get("categoryY") ?? "";
       const value = data[category];
-
-      if (value > 0) {
-        itemsWithNonZero++;
-      }
 
       dataItem.animate({
         key: "valueX",
@@ -209,7 +205,7 @@ export default class Chart {
       });
     });
 
-    this.yAxis.zoom(0, itemsWithNonZero / this.yAxis.dataItems.length);
+    this.yAxis.zoom(0, TOP_N / this.yAxis.dataItems.length);
   }
 
   public appear() {

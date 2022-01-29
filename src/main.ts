@@ -1,8 +1,11 @@
 import "./style.css";
-import allData from "./mock-data";
+// import allData from "./mock-data";
 import Chart from "./chart";
 
 const stepDuration = 2000;
+
+const fetchResult = await fetch("/data.json");
+const allData = await fetchResult.json();
 
 function* generateIterator(_data: Record<string, Record<string, number>>) {
   for (const [yearStr, rank] of Object.entries(_data)) {
@@ -16,15 +19,15 @@ const iterator = generateIterator(allData);
 
 // update data with values each 1.5 sec
 const interval = setInterval(function () {
-  const result = iterator.next();
+  const iteratorResult = iterator.next();
 
-  if (result.done) {
+  if (iteratorResult.done) {
     clearInterval(interval);
     clearInterval(sortInterval);
     return;
   }
 
-  const [year, rank] = result.value;
+  const [year, rank] = iteratorResult.value;
 
   chart.updateData(year, rank);
 }, stepDuration);
@@ -33,11 +36,11 @@ const sortInterval = setInterval(function () {
   chart.sortCategoryAxis();
 }, 100);
 
-const result = iterator.next();
-if (result.done) {
+const iteratorResult = iterator.next();
+if (iteratorResult.done) {
   throw new Error("The data has no record.");
 }
-const [, rank] = result.value;
+const [, rank] = iteratorResult.value;
 chart.setInitialData(rank);
 
 setTimeout(function () {
