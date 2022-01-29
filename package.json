@@ -1,5 +1,5 @@
 {
-  "name": "aws-cdk-contributors-race",
+  "name": "aws-cdk-contribution-chart",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
