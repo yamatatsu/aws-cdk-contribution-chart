@@ -1,15 +1,18 @@
-## Usage
+## Motivation
 
-### Development
+This is for just only keeping my own motivation to contribute AWS CDK. There are no other significance. I think all contributions should be respected However small or few. And it is not to compete.
+
+## Site
+
+https://yamatatsu.github.io/aws-cdk-contribution-chart/
+
+## Development
 
 ```sh
+npm i
 npm run dev
 ```
 
-### Fetch Data
+## Deployment
 
-call following on a regular basis, and commit.
-
-```sh
-npm run fetchData
-```
+Read GitHub Actions workflow😉.
