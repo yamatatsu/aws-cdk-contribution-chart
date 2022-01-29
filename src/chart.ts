@@ -111,8 +111,8 @@ export default class Chart {
         locationX: 1,
         sprite: am5.Label.new(root, {
           text: "{valueXWorking.formatNumber('#.')}",
-          fill: root.interfaceColors.get("alternativeText"),
-          centerX: am5.p100,
+          fill: am5.Color.fromString("black"),
+          centerX: am5.p0,
           centerY: am5.p50,
           populateText: true,
         }),
@@ -122,10 +122,10 @@ export default class Chart {
     const label = chart.plotContainer.children.push(
       am5.Label.new(root, {
         fontSize: "8em",
-        opacity: 0.2,
+        opacity: 0.1,
         x: am5.p100,
-        y: am5.p100,
-        centerY: am5.p100,
+        y: am5.p0,
+        centerY: am5.p0,
         centerX: am5.p100,
       })
     );
