@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  fetch-and-commit:
+  deployment:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
