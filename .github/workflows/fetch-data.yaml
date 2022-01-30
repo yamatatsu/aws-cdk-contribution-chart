@@ -1,4 +1,4 @@
-name: Daily Batch
+name: Fetch Data
 on:
   schedule:
     - cron: "0 0 * * *"
