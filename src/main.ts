@@ -1,41 +1,17 @@
 import "./style.css";
 // import allData from "./mock-data";
 import Chart from "./chart";
+import MyWorker from "./worker?worker";
+import { updateDuration } from "./consts";
 
-const stepDuration = 1000;
+const worker = new MyWorker();
 
 const fetchResult = await fetch("./data.json");
 const allData = await fetchResult.json();
 
-function* generateIterator(_data: Record<string, Record<string, number>>) {
-  for (const [ymd, rank] of Object.entries(_data)) {
-    yield [ymd, rank] as const;
-  }
-}
-
-const chart = new Chart("chartdiv", stepDuration);
+const chart = new Chart("chartdiv", updateDuration);
 
 const iterator = generateIterator(allData);
-
-// update data with values each 1.5 sec
-const interval = setInterval(function () {
-  const iteratorResult = iterator.next();
-
-  if (iteratorResult.done) {
-    clearInterval(interval);
-    clearInterval(sortInterval);
-    return;
-  }
-
-  const [ymd, rank] = iteratorResult.value;
-
-  chart.updateDate(ymd);
-  chart.update(rank);
-}, stepDuration);
-
-const sortInterval = setInterval(function () {
-  chart.sortCategoryAxis();
-}, 100);
 
 const iteratorResult = iterator.next();
 if (iteratorResult.done) {
@@ -43,15 +19,48 @@ if (iteratorResult.done) {
 }
 const [, rank] = iteratorResult.value;
 chart.setInitialData(rank);
+chart.appear();
 
-setTimeout(function () {
-  const result = iterator.next();
-  if (result.done) {
-    throw new Error("The data has only one record.");
+worker.onmessage = (event: MessageEvent) => {
+  switch (event.data.type) {
+    case "eventForFirstUpdate": {
+      const result = iterator.next();
+      if (result.done) {
+        throw new Error("The data has only one record.");
+      }
+      const [ymd, rank] = result.value;
+      chart.updateDate(ymd);
+      chart.update(rank);
+    }
+    case "intervalForUpdate": {
+      update();
+      break;
+    }
+    case "intervalForSort": {
+      chart.sortCategoryAxis();
+      break;
+    }
+    default:
+      break;
   }
-  const [ymd, rank] = result.value;
+};
+
+function update() {
+  const iteratorResult = iterator.next();
+
+  if (iteratorResult.done) {
+    worker.postMessage("done");
+    return;
+  }
+
+  const [ymd, rank] = iteratorResult.value;
+
   chart.updateDate(ymd);
   chart.update(rank);
-}, 50);
+}
 
-chart.appear();
+function* generateIterator(_data: Record<string, Record<string, number>>) {
+  for (const [ymd, rank] of Object.entries(_data)) {
+    yield [ymd, rank] as const;
+  }
+}
