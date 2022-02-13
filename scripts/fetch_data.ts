@@ -14,11 +14,11 @@ main().then(
 async function main() {
   await fetchAndWriteFile();
 
-  const files = await walk();
+  const filenames = await walk();
 
-  const output: Output = await concatFiles(files);
-  const firstKey: string = toYmd(files[0]);
-  const firstData: Rank = await mergeFiles(files);
+  const output: Output = await concatFiles(filenames);
+  const firstKey: string = getFirstKey(filenames);
+  const firstData: Rank = await createFirstRank(filenames);
 
   await writeJson({ ...output, [firstKey]: firstData });
 }
@@ -33,33 +33,50 @@ async function fetchAndWriteFile() {
     > ${RAW_DATA_DIR}/${date}.json`;
 }
 
-const walk = async () =>
-  (await $`ls ${RAW_DATA_DIR}`).stdout.trim().split("\n");
+async function walk() {
+  return (await $`ls ${RAW_DATA_DIR}`).stdout.trim().split("\n");
+}
 
-const concatFiles = (files: string[]) =>
-  files.reduce(
-    async (accPromise, filename) => ({
-      ...(await accPromise),
-      [toYmd(filename)]: await readFile(filename),
-    }),
-    Promise.resolve({} as Output)
+async function read(filenames: string[]): Promise<[string, Rank][]> {
+  return Promise.all(
+    filenames.map(async (filename) => [
+      toYmd(filename),
+      await readFile(filename),
+    ])
   );
+}
+async function concatFiles(filenames: string[]): Promise<Output> {
+  return (await read(filenames)).reduce<Output>(
+    (acc, [ymd, rank]) => ({ ...acc, [ymd]: rank }),
+    {}
+  );
+}
 
-const mergeFiles = (files: string[]): Promise<Rank> =>
-  files.reduce<Promise<Rank>>(
-    async (accPromise, filename) =>
-      merge(await accPromise, await readFile(filename)),
-    Promise.resolve({})
-  );
+function getFirstKey(filenames: string[]): string {
+  return toYmd(filenames[0]);
+}
 
-const toYmd = (filename: string) => filename.split(".")[0];
-const readFile = (filename: string): Promise<Rank> =>
-  $`cat ${RAW_DATA_DIR}/${filename}`.then((res) => JSON.parse(res.stdout));
-const merge = (o1: Rank, o2: Rank): Rank =>
-  Object.entries(o2).reduce(
-    (acc, [name, val]) => (acc[name] ? acc : { ...acc, [name]: val }),
-    o1
-  );
+async function createFirstRank(filenames: string[]): Promise<Rank> {
+  const dateRankTapples = await read(filenames);
+  const [[, firstRank]] = dateRankTapples;
+
+  const contributerNameMap = dateRankTapples
+    .map(([, rank]) => rank)
+    .flatMap((rank) => Object.keys(rank))
+    .reduce<Rank>(
+      (acc, contributerName) => ({ ...acc, [contributerName]: 0 }),
+      {}
+    );
+  return { ...contributerNameMap, ...firstRank };
+}
+
+function toYmd(filename: string) {
+  return filename.split(".")[0];
+}
+async function readFile(filename: string): Promise<Rank> {
+  const { stdout } = await $`cat ${RAW_DATA_DIR}/${filename}`;
+  return JSON.parse(stdout);
+}
 
 async function writeJson(output: Output) {
   await $`echo ${JSON.stringify(
