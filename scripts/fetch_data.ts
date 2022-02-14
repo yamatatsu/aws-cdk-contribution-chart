@@ -1,7 +1,10 @@
 import { $, chalk } from "zx";
 
+$.verbose = false;
+
 type Rank = Record<string, number>;
-type Output = Record<string, Rank>;
+type RankTaple = [string, Rank];
+type DailyRanks = Record<string, Rank>;
 
 const BASE_DIR = `${__dirname}/..`;
 const RAW_DATA_DIR = `${BASE_DIR}/raw_data`;
@@ -16,11 +19,12 @@ async function main() {
 
   const filenames = await walk();
 
-  const output: Output = await concatFiles(filenames);
+  const dailyRank: DailyRanks = await createDailyRankDiffs(filenames);
+
   const firstKey: string = getFirstKey(filenames);
   const firstData: Rank = await createFirstRank(filenames);
 
-  await writeJson({ ...output, [firstKey]: firstData });
+  await writeJson({ ...dailyRank, [firstKey]: firstData });
 }
 
 async function fetchAndWriteFile() {
@@ -37,7 +41,7 @@ async function walk() {
   return (await $`ls ${RAW_DATA_DIR}`).stdout.trim().split("\n");
 }
 
-async function read(filenames: string[]): Promise<[string, Rank][]> {
+async function read(filenames: string[]): Promise<RankTaple[]> {
   return Promise.all(
     filenames.map(async (filename) => [
       toYmd(filename),
@@ -45,11 +49,25 @@ async function read(filenames: string[]): Promise<[string, Rank][]> {
     ])
   );
 }
-async function concatFiles(filenames: string[]): Promise<Output> {
-  return (await read(filenames)).reduce<Output>(
-    (acc, [ymd, rank]) => ({ ...acc, [ymd]: rank }),
-    {}
+async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
+  const dateRankTapples = await read(filenames);
+  const diffTapples = dateRankTapples.reduce<RankTaple[]>(
+    (acc, rankTapple, index) => {
+      if (index === 0) {
+        return [rankTapple];
+      }
+      const [ymd, rank] = rankTapple;
+      const [, beforeOne] = dateRankTapples[index - 1];
+      const diff = Object.fromEntries(
+        Object.entries(rank).filter(
+          ([contributerName, val]) => beforeOne[contributerName] !== val
+        )
+      );
+      return [...acc, [ymd, diff]];
+    },
+    []
   );
+  return Object.fromEntries(diffTapples);
 }
 
 function getFirstKey(filenames: string[]): string {
@@ -78,7 +96,7 @@ async function readFile(filename: string): Promise<Rank> {
   return JSON.parse(stdout);
 }
 
-async function writeJson(output: Output) {
+async function writeJson(output: DailyRanks) {
   await $`echo ${JSON.stringify(
     output,
     null,
