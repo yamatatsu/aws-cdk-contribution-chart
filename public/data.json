@@ -233,5 +233,8 @@
     "aws-cdk-automation": 165,
     "kaizen3031593": 130,
     "comcalvi": 37
+  },
+  "2022-02-20": {
+    "mergify[bot]": 319
   }
 }
