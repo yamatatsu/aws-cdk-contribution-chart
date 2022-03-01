@@ -278,5 +278,14 @@
   "2022-02-28": {
     "aws-cdk-automation": 171,
     "otaviomacedo": 75
+  },
+  "2022-03-01": {
+    "jogold": 295,
+    "aws-cdk-automation": 172,
+    "otaviomacedo": 76,
+    "robertd": 72,
+    "hoegertn": 57,
+    "dependabot[bot]": 28,
+    "Chriscbr": 11
   }
 }
