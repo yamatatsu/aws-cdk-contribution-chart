@@ -287,5 +287,12 @@
     "hoegertn": 57,
     "dependabot[bot]": 28,
     "Chriscbr": 11
+  },
+  "2022-03-02": {
+    "mergify[bot]": 324,
+    "jogold": 296,
+    "aws-cdk-automation": 173,
+    "robertd": 73,
+    "yamatatsu": 25
   }
 }
