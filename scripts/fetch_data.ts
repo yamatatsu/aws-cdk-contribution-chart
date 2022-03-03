@@ -17,7 +17,7 @@ main().then(
 async function main() {
   await fetchAndWriteFile();
 
-  const filenames = await walk();
+  const filenames = pickByWeek(await walk());
 
   const dailyRank: DailyRanks = await createDailyRankDiffs(filenames);
 
@@ -37,8 +37,13 @@ async function fetchAndWriteFile() {
     > ${RAW_DATA_DIR}/${date}.json`;
 }
 
-async function walk() {
+async function walk(): Promise<string[]> {
   return (await $`ls ${RAW_DATA_DIR}`).stdout.trim().split("\n");
+}
+function pickByWeek(filenames: string[]): string[] {
+  return filenames
+    .filter((_, i) => i % 7 === 0)
+    .concat(filenames[filenames.length - 1]);
 }
 
 async function read(filenames: string[]): Promise<RankTaple[]> {
