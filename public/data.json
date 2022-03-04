@@ -100,203 +100,94 @@
     "michaelbrewer": 6,
     "nathanpeck": 6,
     "richardhboyd": 6,
-    "setu4993": 0,
     "markussiebert": 0,
+    "setu4993": 0,
     "adamelmore": 0,
     "relm923": 0
   },
-  "2022-01-27": {
-    "rix0rrr": 843,
-    "njlynch": 237,
-    "aws-cdk-automation": 142,
-    "otaviomacedo": 69
-  },
-  "2022-01-28": {
-    "rix0rrr": 844,
-    "mergify[bot]": 310,
-    "aws-cdk-automation": 144,
-    "kaizen3031593": 119,
-    "yamatatsu": 19,
-    "arcrank": 13
-  },
-  "2022-01-29": {
-    "rix0rrr": 847,
-    "aws-cdk-automation": 145,
-    "kaizen3031593": 120,
-    "peterwoodworth": 34,
-    "hassanazharkhan": 8,
-    "setu4993": 6
-  },
-  "2022-01-30": {
-    "mergify[bot]": 312
-  },
-  "2022-01-31": {},
-  "2022-02-01": {
+  "2022-02-02": {
     "rix0rrr": 849,
+    "eladb": 649,
+    "mergify[bot]": 312,
+    "jogold": 294,
     "njlynch": 238,
-    "aws-cdk-automation": 146,
+    "aws-cdk-automation": 148,
     "kaizen3031593": 121,
     "otaviomacedo": 70,
+    "peterwoodworth": 34,
     "corymhall": 30,
     "yamatatsu": 20,
-    "PatMyron": 13
+    "PatMyron": 13,
+    "arcrank": 13,
+    "hassanazharkhan": 8,
+    "markussiebert": 7,
+    "setu4993": 6
   },
-  "2022-02-02": {
-    "eladb": 649,
-    "jogold": 294,
-    "aws-cdk-automation": 148,
-    "markussiebert": 7
-  },
-  "2022-02-03": {
-    "rix0rrr": 850,
-    "mergify[bot]": 315,
-    "aws-cdk-automation": 149,
-    "jumic": 38
-  },
-  "2022-02-04": {
-    "rix0rrr": 852,
-    "eladb": 650,
-    "aws-cdk-automation": 150,
-    "comcalvi": 35,
-    "yamatatsu": 21
-  },
-  "2022-02-05": {
-    "rix0rrr": 853,
-    "aws-cdk-automation": 153,
-    "corymhall": 31
-  },
-  "2022-02-06": {},
-  "2022-02-07": {
-    "robertd": 68
-  },
-  "2022-02-08": {
-    "rix0rrr": 855,
+  "2022-02-09": {
+    "rix0rrr": 858,
     "eladb": 651,
+    "mergify[bot]": 317,
+    "aws-cdk-automation": 155,
     "kaizen3031593": 122,
-    "corymhall": 32,
+    "robertd": 68,
+    "jumic": 38,
+    "comcalvi": 35,
+    "corymhall": 34,
     "yamatatsu": 23,
     "dependabot[bot]": 23,
     "kirintwn": 9
   },
-  "2022-02-09": {
-    "rix0rrr": 858,
-    "mergify[bot]": 317,
-    "aws-cdk-automation": 155,
-    "corymhall": 34
-  },
-  "2022-02-10": {
+  "2022-02-16": {
     "rix0rrr": 859,
     "skinny85": 383,
-    "aws-cdk-automation": 157,
-    "kaizen3031593": 123
-  },
-  "2022-02-11": {
+    "shivlaks": 237,
     "iliapolo": 184,
-    "aws-cdk-automation": 159,
-    "madeline-k": 40
-  },
-  "2022-02-12": {
-    "aws-cdk-automation": 160,
-    "kaizen3031593": 125,
-    "corymhall": 36,
-    "peterwoodworth": 35
-  },
-  "2022-02-13": {},
-  "2022-02-14": {},
-  "2022-02-15": {
+    "aws-cdk-automation": 161,
     "kaizen3031593": 127,
     "hoegertn": 55,
+    "madeline-k": 40,
+    "corymhall": 36,
+    "peterwoodworth": 35,
     "dependabot[bot]": 24,
     "adamelmore": 6
   },
-  "2022-02-16": {
-    "shivlaks": 237,
-    "aws-cdk-automation": 161
-  },
-  "2022-02-17": {
-    "rix0rrr": 860,
-    "aws-cdk-automation": 163,
-    "kaizen3031593": 129,
-    "hoegertn": 56
-  },
-  "2022-02-18": {
-    "rix0rrr": 863,
-    "iliapolo": 185,
-    "aws-cdk-automation": 164,
-    "corymhall": 37,
-    "comcalvi": 36,
-    "dependabot[bot]": 25,
-    "yamatatsu": 24,
-    "mprencipe": 8
-  },
-  "2022-02-19": {
-    "rix0rrr": 866,
-    "aws-cdk-automation": 165,
-    "kaizen3031593": 130,
-    "comcalvi": 37
-  },
-  "2022-02-20": {
-    "mergify[bot]": 319
-  },
-  "2022-02-21": {},
-  "2022-02-22": {
-    "rix0rrr": 868,
-    "eladb": 652,
-    "skinny85": 384,
-    "aws-cdk-automation": 166,
-    "kaizen3031593": 131,
-    "corymhall": 38,
-    "dependabot[bot]": 26
-  },
   "2022-02-23": {
     "rix0rrr": 869,
+    "eladb": 652,
+    "skinny85": 384,
+    "mergify[bot]": 319,
+    "iliapolo": 185,
+    "aws-cdk-automation": 166,
+    "kaizen3031593": 131,
     "otaviomacedo": 73,
     "robertd": 70,
+    "hoegertn": 56,
+    "corymhall": 38,
+    "comcalvi": 37,
+    "dependabot[bot]": 26,
+    "yamatatsu": 24,
+    "mprencipe": 8,
     "markussiebert": 8
   },
-  "2022-02-24": {
-    "rix0rrr": 870,
-    "aws-cdk-automation": 168,
-    "kaizen3031593": 132,
-    "otaviomacedo": 74,
-    "robertd": 71
-  },
-  "2022-02-25": {
-    "skinny85": 385,
-    "iliapolo": 187,
-    "aws-cdk-automation": 169,
-    "kaizen3031593": 133
-  },
-  "2022-02-26": {
-    "skinny85": 386,
-    "mergify[bot]": 322,
-    "aws-cdk-automation": 170,
-    "comcalvi": 38
-  },
-  "2022-02-27": {
-    "rix0rrr": 871
-  },
-  "2022-02-28": {
-    "aws-cdk-automation": 171,
-    "otaviomacedo": 75
-  },
-  "2022-03-01": {
-    "jogold": 295,
-    "aws-cdk-automation": 172,
-    "otaviomacedo": 76,
-    "robertd": 72,
-    "hoegertn": 57,
-    "dependabot[bot]": 28,
-    "Chriscbr": 11
-  },
   "2022-03-02": {
+    "rix0rrr": 871,
+    "skinny85": 386,
     "mergify[bot]": 324,
     "jogold": 296,
+    "iliapolo": 187,
     "aws-cdk-automation": 173,
+    "kaizen3031593": 133,
+    "otaviomacedo": 76,
     "robertd": 73,
-    "yamatatsu": 25
+    "hoegertn": 57,
+    "comcalvi": 38,
+    "dependabot[bot]": 28,
+    "yamatatsu": 25,
+    "Chriscbr": 11
   },
-  "2022-03-03": {
+  "2022-03-04": {
+    "aws-cdk-automation": 174,
+    "arcrank": 14,
     "relm923": 6
   }
 }
