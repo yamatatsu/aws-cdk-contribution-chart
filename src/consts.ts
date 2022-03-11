@@ -1,3 +1,3 @@
-export const updateDuration = 1000;
-export const sortDuration = 100;
+export const updateDuration = 1500;
+export const sortDuration = 500;
 export const firstUpdateBuffer = 50;
