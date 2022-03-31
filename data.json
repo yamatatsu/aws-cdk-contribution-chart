@@ -230,5 +230,25 @@
     "dependabot[bot]": 33,
     "moofish32": 21
   },
-  "2022-03-30": {}
+  "2022-03-30": {
+    "rix0rrr": 888,
+    "mergify[bot]": 333,
+    "aws-cdk-automation": 193,
+    "kaizen3031593": 145,
+    "otaviomacedo": 84,
+    "robertd": 75,
+    "corymhall": 47,
+    "madeline-k": 45,
+    "peterwoodworth": 44,
+    "dependabot[bot]": 35,
+    "jungseoklee": 12,
+    "Chriscbr": 12,
+    "markussiebert": 9
+  },
+  "2022-03-31": {
+    "RomainMuller": 380,
+    "aws-cdk-automation": 195,
+    "corymhall": 48,
+    "Chriscbr": 13
+  }
 }
