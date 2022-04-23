@@ -297,12 +297,15 @@
     "arcrank": 15,
     "Chriscbr": 14
   },
-  "2022-04-22": {
-    "rix0rrr": 905,
-    "aws-cdk-automation": 210,
+  "2022-04-23": {
+    "rix0rrr": 909,
+    "mergify[bot]": 343,
+    "aws-cdk-automation": 211,
     "kaizen3031593": 156,
+    "otaviomacedo": 88,
     "robertd": 81,
     "corymhall": 79,
-    "peterwoodworth": 57
+    "peterwoodworth": 57,
+    "hassanazharkhan": 9
   }
 }
