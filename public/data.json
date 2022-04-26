@@ -103,7 +103,8 @@
     "markussiebert": 0,
     "setu4993": 0,
     "adamelmore": 0,
-    "relm923": 0
+    "relm923": 0,
+    "kaizencc": 0
   },
   "2022-02-02": {
     "rix0rrr": 849,
@@ -297,15 +298,17 @@
     "arcrank": 15,
     "Chriscbr": 14
   },
-  "2022-04-25": {
-    "rix0rrr": 911,
+  "2022-04-26": {
+    "rix0rrr": 912,
+    "RomainMuller": 381,
     "mergify[bot]": 346,
-    "aws-cdk-automation": 211,
-    "kaizen3031593": 156,
+    "aws-cdk-automation": 212,
+    "kaizencc": 156,
     "otaviomacedo": 88,
     "robertd": 81,
-    "corymhall": 79,
+    "corymhall": 80,
     "peterwoodworth": 57,
+    "dependabot[bot]": 44,
     "hassanazharkhan": 9
   }
 }
