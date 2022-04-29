@@ -312,10 +312,13 @@
     "markussiebert": 10,
     "hassanazharkhan": 9
   },
-  "2022-04-28": {
-    "rix0rrr": 914,
-    "aws-cdk-automation": 213,
+  "2022-04-29": {
+    "rix0rrr": 915,
+    "mergify[bot]": 348,
+    "aws-cdk-automation": 214,
+    "kaizencc": 158,
     "corymhall": 82,
+    "peterwoodworth": 59,
     "dependabot[bot]": 45,
     "arcrank": 16
   }
