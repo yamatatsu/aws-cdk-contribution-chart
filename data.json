@@ -104,7 +104,8 @@
     "setu4993": 0,
     "adamelmore": 0,
     "relm923": 0,
-    "kaizencc": 0
+    "kaizencc": 0,
+    "Dzhuneyt": 0
   },
   "2022-02-02": {
     "rix0rrr": 849,
@@ -312,5 +313,21 @@
     "markussiebert": 10,
     "hassanazharkhan": 9
   },
-  "2022-05-04": {}
+  "2022-05-04": {
+    "rix0rrr": 916,
+    "mergify[bot]": 348,
+    "aws-cdk-automation": 217,
+    "kaizencc": 159,
+    "robertd": 82,
+    "corymhall": 82,
+    "peterwoodworth": 59,
+    "dependabot[bot]": 46,
+    "arcrank": 16,
+    "markussiebert": 11
+  },
+  "2022-05-05": {
+    "mergify[bot]": 350,
+    "aws-cdk-automation": 218,
+    "Dzhuneyt": 6
+  }
 }
