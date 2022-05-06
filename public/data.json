@@ -325,9 +325,13 @@
     "arcrank": 16,
     "markussiebert": 11
   },
-  "2022-05-05": {
+  "2022-05-06": {
+    "rix0rrr": 917,
+    "RomainMuller": 383,
     "mergify[bot]": 350,
-    "aws-cdk-automation": 218,
+    "aws-cdk-automation": 220,
+    "robertd": 83,
+    "relm923": 7,
     "Dzhuneyt": 6
   }
 }
