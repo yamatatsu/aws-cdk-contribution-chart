@@ -105,7 +105,8 @@
     "adamelmore": 0,
     "relm923": 0,
     "kaizencc": 0,
-    "Dzhuneyt": 0
+    "Dzhuneyt": 0,
+    "TheRealAmazonKendra": 0
   },
   "2022-02-02": {
     "rix0rrr": 849,
@@ -325,5 +326,23 @@
     "arcrank": 16,
     "markussiebert": 11
   },
-  "2022-05-11": {}
+  "2022-05-11": {
+    "rix0rrr": 917,
+    "RomainMuller": 383,
+    "mergify[bot]": 350,
+    "aws-cdk-automation": 222,
+    "robertd": 83,
+    "corymhall": 83,
+    "madeline-k": 52,
+    "dependabot[bot]": 47,
+    "ryparker": 19,
+    "relm923": 7,
+    "Dzhuneyt": 6
+  },
+  "2022-05-12": {
+    "aws-cdk-automation": 224,
+    "kaizencc": 160,
+    "corymhall": 84,
+    "TheRealAmazonKendra": 6
+  }
 }
