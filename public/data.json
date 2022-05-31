@@ -368,12 +368,13 @@
     "misterjoshua": 21,
     "Chriscbr": 19
   },
-  "2022-05-30": {
+  "2022-05-31": {
     "rix0rrr": 925,
     "mergify[bot]": 361,
-    "aws-cdk-automation": 236,
+    "aws-cdk-automation": 237,
     "corymhall": 95,
     "madeline-k": 54,
+    "dependabot[bot]": 50,
     "MrArnoldPalmer": 35
   }
 }
