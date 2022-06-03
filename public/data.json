@@ -107,7 +107,8 @@
     "kaizencc": 0,
     "Dzhuneyt": 0,
     "TheRealAmazonKendra": 0,
-    "kylelaker": 0
+    "kylelaker": 0,
+    "daschaa": 0
   },
   "2022-02-02": {
     "rix0rrr": 849,
@@ -379,25 +380,27 @@
     "dependabot[bot]": 50,
     "MrArnoldPalmer": 35
   },
-  "2022-06-02": {
+  "2022-06-03": {
     "rix0rrr": 985,
     "eladb": 707,
-    "mergify[bot]": 648,
+    "mergify[bot]": 649,
     "skinny85": 432,
     "RomainMuller": 396,
     "njlynch": 356,
+    "jogold": 311,
     "aws-cdk-automation": 288,
     "iliapolo": 230,
-    "kaizencc": 193,
+    "kaizencc": 194,
     "corymhall": 122,
     "NetaNir": 112,
     "otaviomacedo": 110,
-    "madeline-k": 97,
+    "madeline-k": 98,
     "nija-at": 61,
     "comcalvi": 57,
     "dependabot[bot]": 51,
     "MrArnoldPalmer": 44,
     "BenChaimberg": 36,
-    "Chriscbr": 30
+    "Chriscbr": 30,
+    "daschaa": 7
   }
 }
