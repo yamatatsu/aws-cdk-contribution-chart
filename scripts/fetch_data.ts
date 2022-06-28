@@ -17,7 +17,7 @@ main().then(
 async function main() {
   await fetchAndWriteFile();
 
-  const filenames = pickByWeek(await walk());
+  const filenames = filterByTwoWeek(await walk());
 
   const dailyRank: DailyRanks = await createDailyRankDiffs(filenames);
 
@@ -40,7 +40,7 @@ async function fetchAndWriteFile() {
 async function walk(): Promise<string[]> {
   return (await $`ls ${RAW_DATA_DIR}`).stdout.trim().split("\n");
 }
-function pickByWeek(filenames: string[]): string[] {
+function filterByTwoWeek(filenames: string[]): string[] {
   return filenames
     .filter((_, i) => i % 7 === 0)
     .concat(filenames[filenames.length - 1]);
@@ -62,13 +62,16 @@ async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
         return [rankTapple];
       }
       const [ymd, rank] = rankTapple;
-      const [, beforeOne] = dateRankTapples[index - 1];
-      const diff = Object.fromEntries(
-        Object.entries(rank).filter(
-          ([contributerName, val]) => beforeOne[contributerName] !== val
-        )
+      const [, prevRank] = dateRankTapples[index - 1];
+      const diff = pickBy(
+        rank,
+        (contributorName, val) => prevRank[contributorName] !== val
       );
-      return [...acc, [ymd, diff]];
+      const missingRankers = mapValues(
+        pickBy(prevRank, (contributorName) => !rank[contributorName]),
+        () => 0
+      );
+      return [...acc, [ymd, { ...diff, ...missingRankers }]];
     },
     []
   );
@@ -79,18 +82,35 @@ function getFirstKey(filenames: string[]): string {
   return toYmd(filenames[0]);
 }
 
+function pickBy<V>(
+  record: Record<string, V>,
+  fn: (key: string, val: V) => boolean
+): Record<string, V> {
+  return Object.fromEntries(
+    Object.entries<V>(record).filter(([key, val]) => fn(key, val))
+  );
+}
+function mapValues<V1, V2>(
+  record: Record<string, V1>,
+  fn: (key: string, val: V1) => V2
+): Record<string, V2> {
+  return Object.fromEntries(
+    Object.entries<V1>(record).map(([key, val]) => [key, fn(key, val)])
+  );
+}
+
 async function createFirstRank(filenames: string[]): Promise<Rank> {
   const dateRankTapples = await read(filenames);
   const [[, firstRank]] = dateRankTapples;
 
-  const contributerNameMap = dateRankTapples
+  const contributorNameMap = dateRankTapples
     .map(([, rank]) => rank)
     .flatMap((rank) => Object.keys(rank))
     .reduce<Rank>(
-      (acc, contributerName) => ({ ...acc, [contributerName]: 0 }),
+      (acc, contributorName) => ({ ...acc, [contributorName]: 0 }),
       {}
     );
-  return { ...contributerNameMap, ...firstRank };
+  return { ...contributorNameMap, ...firstRank };
 }
 
 function toYmd(filename: string) {

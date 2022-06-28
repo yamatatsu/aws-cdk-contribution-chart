@@ -193,7 +193,7 @@ export default class Chart {
       const category = dataItem.get("categoryY") ?? "";
       const value = data[category];
 
-      if (!value) {
+      if (value == null) {
         return;
       }
 
