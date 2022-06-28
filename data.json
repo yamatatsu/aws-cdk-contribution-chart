@@ -428,12 +428,13 @@
     "yamatatsu": 34,
     "TheRealAmazonKendra": 8
   },
-  "2022-06-27": {
+  "2022-06-28": {
     "rix0rrr": 988,
     "mergify[bot]": 661,
     "aws-cdk-automation": 291,
-    "dependabot[bot]": 54,
+    "dependabot[bot]": 55,
     "MrArnoldPalmer": 45,
+    "flemjame-at-amazon": 31,
     "kylelaker": 8
   }
 }
