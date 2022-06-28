@@ -43,8 +43,9 @@ async function read(filenames: string[]): Promise<RankTuple[]> {
 }
 async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
   const dateRankTuples = await read(filenames);
-  const diffTuples = dateRankTuples.reduce<RankTuple[]>(
-    (acc, rankTuple, index) => {
+  const diffTuples = dateRankTuples
+    .map<RankTuple>(([ymd, rank]) => [ymd, omitBots(rank)])
+    .reduce<RankTuple[]>((acc, rankTuple, index) => {
       if (index === 0) {
         return [rankTuple];
       }
@@ -59,9 +60,7 @@ async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
         () => 0
       );
       return [...acc, [ymd, { ...diff, ...missingRankers }]];
-    },
-    []
-  );
+    }, []);
   return Object.fromEntries(diffTuples);
 }
 
@@ -80,11 +79,16 @@ async function createFirstRank(filenames: string[]): Promise<Rank> {
       (acc, contributorName) => ({ ...acc, [contributorName]: 0 }),
       {}
     );
-  return { ...contributorNameMap, ...firstRank };
+  return omitBots({ ...contributorNameMap, ...firstRank });
 }
 
 function toYmd(filename: string) {
   return filename.split(".")[0];
+}
+
+function omitBots(rank: Rank) {
+  const bots = /^(dependabot|mergify|aws-cdk-automation)/;
+  return pickBy(rank, (contributorName) => !bots.test(contributorName));
 }
 
 // ============== //
