@@ -3,7 +3,7 @@ import { $, chalk } from "zx";
 $.verbose = false;
 
 type Rank = Record<string, number>;
-type RankTaple = [string, Rank];
+type RankTuple = [string, Rank];
 type DailyRanks = Record<string, Rank>;
 
 const BASE_DIR = `${__dirname}/..`;
@@ -27,26 +27,13 @@ async function main() {
   await writeJson({ ...dailyRank, [firstKey]: firstData });
 }
 
-async function fetchAndWriteFile() {
-  const date = (await $`date '+%Y-%m-%d'`).stdout.trim();
-
-  await $`curl \
-    -H "Accept: application/vnd.github.v3+json" \
-    'https://api.github.com/repos/aws/aws-cdk/contributors?per_page=100' \
-    | jq 'map({(.login): .contributions}) | add' \
-    > ${RAW_DATA_DIR}/${date}.json`;
-}
-
-async function walk(): Promise<string[]> {
-  return (await $`ls ${RAW_DATA_DIR}`).stdout.trim().split("\n");
-}
 function filterByTwoWeek(filenames: string[]): string[] {
   return filenames
     .filter((_, i) => i % 7 === 0)
     .concat(filenames[filenames.length - 1]);
 }
 
-async function read(filenames: string[]): Promise<RankTaple[]> {
+async function read(filenames: string[]): Promise<RankTuple[]> {
   return Promise.all(
     filenames.map(async (filename) => [
       toYmd(filename),
@@ -55,14 +42,14 @@ async function read(filenames: string[]): Promise<RankTaple[]> {
   );
 }
 async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
-  const dateRankTapples = await read(filenames);
-  const diffTapples = dateRankTapples.reduce<RankTaple[]>(
-    (acc, rankTapple, index) => {
+  const dateRankTuples = await read(filenames);
+  const diffTuples = dateRankTuples.reduce<RankTuple[]>(
+    (acc, rankTuple, index) => {
       if (index === 0) {
-        return [rankTapple];
+        return [rankTuple];
       }
-      const [ymd, rank] = rankTapple;
-      const [, prevRank] = dateRankTapples[index - 1];
+      const [ymd, rank] = rankTuple;
+      const [, prevRank] = dateRankTuples[index - 1];
       const diff = pickBy(
         rank,
         (contributorName, val) => prevRank[contributorName] !== val
@@ -75,12 +62,65 @@ async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
     },
     []
   );
-  return Object.fromEntries(diffTapples);
+  return Object.fromEntries(diffTuples);
 }
 
 function getFirstKey(filenames: string[]): string {
   return toYmd(filenames[0]);
 }
+
+async function createFirstRank(filenames: string[]): Promise<Rank> {
+  const dateRankTuples = await read(filenames);
+  const [[, firstRank]] = dateRankTuples;
+
+  const contributorNameMap = dateRankTuples
+    .map(([, rank]) => rank)
+    .flatMap((rank) => Object.keys(rank))
+    .reduce<Rank>(
+      (acc, contributorName) => ({ ...acc, [contributorName]: 0 }),
+      {}
+    );
+  return { ...contributorNameMap, ...firstRank };
+}
+
+function toYmd(filename: string) {
+  return filename.split(".")[0];
+}
+
+// ============== //
+// file operations
+// ============== //
+
+async function walk(): Promise<string[]> {
+  return (await $`ls ${RAW_DATA_DIR}`).stdout.trim().split("\n");
+}
+
+async function fetchAndWriteFile() {
+  const date = (await $`date '+%Y-%m-%d'`).stdout.trim();
+
+  await $`curl \
+    -H "Accept: application/vnd.github.v3+json" \
+    'https://api.github.com/repos/aws/aws-cdk/contributors?per_page=100' \
+    | jq 'map({(.login): .contributions}) | add' \
+    > ${RAW_DATA_DIR}/${date}.json`;
+}
+
+async function readFile(filename: string): Promise<Rank> {
+  const { stdout } = await $`cat ${RAW_DATA_DIR}/${filename}`;
+  return JSON.parse(stdout);
+}
+
+async function writeJson(output: DailyRanks) {
+  await $`echo ${JSON.stringify(
+    output,
+    null,
+    2
+  )} > ${BASE_DIR}/public/data.json`;
+}
+
+// ============== //
+// utils
+// ============== //
 
 function pickBy<V>(
   record: Record<string, V>,
@@ -97,34 +137,4 @@ function mapValues<V1, V2>(
   return Object.fromEntries(
     Object.entries<V1>(record).map(([key, val]) => [key, fn(key, val)])
   );
-}
-
-async function createFirstRank(filenames: string[]): Promise<Rank> {
-  const dateRankTapples = await read(filenames);
-  const [[, firstRank]] = dateRankTapples;
-
-  const contributorNameMap = dateRankTapples
-    .map(([, rank]) => rank)
-    .flatMap((rank) => Object.keys(rank))
-    .reduce<Rank>(
-      (acc, contributorName) => ({ ...acc, [contributorName]: 0 }),
-      {}
-    );
-  return { ...contributorNameMap, ...firstRank };
-}
-
-function toYmd(filename: string) {
-  return filename.split(".")[0];
-}
-async function readFile(filename: string): Promise<Rank> {
-  const { stdout } = await $`cat ${RAW_DATA_DIR}/${filename}`;
-  return JSON.parse(stdout);
-}
-
-async function writeJson(output: DailyRanks) {
-  await $`echo ${JSON.stringify(
-    output,
-    null,
-    2
-  )} > ${BASE_DIR}/public/data.json`;
 }
