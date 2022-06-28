@@ -42,10 +42,11 @@ async function read(filenames: string[]): Promise<RankTuple[]> {
   );
 }
 async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
-  const dateRankTuples = await read(filenames);
-  const diffTuples = dateRankTuples
-    .map<RankTuple>(([ymd, rank]) => [ymd, omitBots(rank)])
-    .reduce<RankTuple[]>((acc, rankTuple, index) => {
+  const dateRankTuples = (await read(filenames)).map<RankTuple>(
+    ([ymd, rank]) => [ymd, omitBots(rank)]
+  );
+  const diffTuples = dateRankTuples.reduce<RankTuple[]>(
+    (acc, rankTuple, index) => {
       if (index === 0) {
         return [rankTuple];
       }
@@ -60,7 +61,9 @@ async function createDailyRankDiffs(filenames: string[]): Promise<DailyRanks> {
         () => 0
       );
       return [...acc, [ymd, { ...diff, ...missingRankers }]];
-    }, []);
+    },
+    []
+  );
   return Object.fromEntries(diffTuples);
 }
 

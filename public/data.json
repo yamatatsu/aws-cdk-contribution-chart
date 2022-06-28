@@ -121,10 +121,6 @@
     "hassanazharkhan": 8,
     "markussiebert": 7,
     "setu4993": 6,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0,
     "nathanpeck": 0,
     "richardhboyd": 0
   },
@@ -137,11 +133,7 @@
     "comcalvi": 35,
     "corymhall": 34,
     "yamatatsu": 23,
-    "kirintwn": 9,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "kirintwn": 9
   },
   "2022-02-16": {
     "rix0rrr": 859,
@@ -154,10 +146,6 @@
     "corymhall": 36,
     "peterwoodworth": 35,
     "adamelmore": 6,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0,
     "michaelbrewer": 0
   },
   "2022-02-23": {
@@ -173,11 +161,7 @@
     "comcalvi": 37,
     "yamatatsu": 24,
     "mprencipe": 8,
-    "markussiebert": 8,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "markussiebert": 8
   },
   "2022-03-02": {
     "rix0rrr": 871,
@@ -190,11 +174,7 @@
     "hoegertn": 57,
     "comcalvi": 38,
     "yamatatsu": 25,
-    "Chriscbr": 11,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "Chriscbr": 11
   },
   "2022-03-09": {
     "rix0rrr": 872,
@@ -206,10 +186,6 @@
     "yamatatsu": 27,
     "arcrank": 14,
     "relm923": 6,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0,
     "humanzz": 0
   },
   "2022-03-16": {
@@ -225,11 +201,7 @@
     "yamatatsu": 28,
     "misterjoshua": 19,
     "ryparker": 18,
-    "PatMyron": 15,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "PatMyron": 15
   },
   "2022-03-23": {
     "rix0rrr": 886,
@@ -240,11 +212,7 @@
     "corymhall": 46,
     "peterwoodworth": 40,
     "comcalvi": 39,
-    "moofish32": 21,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "moofish32": 21
   },
   "2022-03-30": {
     "rix0rrr": 888,
@@ -256,11 +224,7 @@
     "peterwoodworth": 44,
     "jungseoklee": 12,
     "Chriscbr": 12,
-    "markussiebert": 9,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "markussiebert": 9
   },
   "2022-04-06": {
     "rix0rrr": 892,
@@ -279,11 +243,7 @@
     "PatMyron": 16,
     "Chriscbr": 13,
     "kellertk": 9,
-    "mitchlloyd": 7,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "mitchlloyd": 7
   },
   "2022-04-13": {
     "rix0rrr": 899,
@@ -296,11 +256,7 @@
     "ayush987goyal": 46,
     "comcalvi": 41,
     "yamatatsu": 31,
-    "jungseoklee": 13,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "jungseoklee": 13
   },
   "2022-04-20": {
     "rix0rrr": 901,
@@ -312,11 +268,7 @@
     "peterwoodworth": 56,
     "MrArnoldPalmer": 34,
     "arcrank": 15,
-    "Chriscbr": 14,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "Chriscbr": 14
   },
   "2022-04-27": {
     "rix0rrr": 912,
@@ -328,11 +280,7 @@
     "peterwoodworth": 58,
     "markussiebert": 10,
     "hassanazharkhan": 9,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "kaizen3031593": 0,
-    "dependabot[bot]": 0
+    "kaizen3031593": 0
   },
   "2022-05-04": {
     "rix0rrr": 916,
@@ -341,11 +289,7 @@
     "corymhall": 82,
     "peterwoodworth": 59,
     "arcrank": 16,
-    "markussiebert": 11,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "markussiebert": 11
   },
   "2022-05-11": {
     "rix0rrr": 917,
@@ -356,10 +300,6 @@
     "ryparker": 19,
     "relm923": 7,
     "Dzhuneyt": 6,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0,
     "setu4993": 0
   },
   "2022-05-18": {
@@ -372,10 +312,6 @@
     "yamatatsu": 32,
     "TheRealAmazonKendra": 7,
     "kylelaker": 7,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0,
     "michaelmoussa": 0,
     "rhboyd": 0
   },
@@ -388,11 +324,7 @@
     "peterwoodworth": 62,
     "comcalvi": 44,
     "misterjoshua": 21,
-    "Chriscbr": 19,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "Chriscbr": 19
   },
   "2022-06-01": {
     "rix0rrr": 926,
@@ -400,11 +332,7 @@
     "kaizencc": 164,
     "corymhall": 95,
     "madeline-k": 54,
-    "MrArnoldPalmer": 35,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "MrArnoldPalmer": 35
   },
   "2022-06-08": {
     "rix0rrr": 985,
@@ -428,10 +356,6 @@
     "kellertk": 10,
     "daschaa": 8,
     "hacker65536": 8,
-    "dependabot-preview[bot]": 0,
-    "mergify[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0,
     "mbonig": 0
   },
   "2022-06-15": {
@@ -440,11 +364,7 @@
     "corymhall": 124,
     "madeline-k": 99,
     "jumic": 39,
-    "daschaa": 9,
-    "mergify[bot]": 0,
-    "dependabot-preview[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "daschaa": 9
   },
   "2022-06-22": {
     "rix0rrr": 986,
@@ -454,20 +374,12 @@
     "peterwoodworth": 64,
     "comcalvi": 59,
     "yamatatsu": 34,
-    "TheRealAmazonKendra": 8,
-    "mergify[bot]": 0,
-    "dependabot-preview[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "TheRealAmazonKendra": 8
   },
   "2022-06-28": {
     "rix0rrr": 988,
     "MrArnoldPalmer": 45,
     "flemjame-at-amazon": 31,
-    "kylelaker": 8,
-    "mergify[bot]": 0,
-    "dependabot-preview[bot]": 0,
-    "aws-cdk-automation": 0,
-    "dependabot[bot]": 0
+    "kylelaker": 8
   }
 }
