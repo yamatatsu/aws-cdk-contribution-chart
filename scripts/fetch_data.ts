@@ -15,9 +15,9 @@ main().then(
 );
 
 async function main() {
-  await fetchAndWriteFile();
+  // await fetchAndWriteFile();
 
-  const filenames = filterByTwoWeek(await walk());
+  const filenames = filterMonthly(await walk());
 
   const dailyRank: DailyRanks = await createDailyRankDiffs(filenames);
 
@@ -27,10 +27,8 @@ async function main() {
   await writeJson({ ...dailyRank, [firstKey]: firstData });
 }
 
-function filterByTwoWeek(filenames: string[]): string[] {
-  return filenames
-    .filter((_, i) => i % 7 === 0)
-    .concat(filenames[filenames.length - 1]);
+function filterMonthly(filenames: string[]): string[] {
+  return filenames.filter((name) => /^202\d-\d\d-01/.test(name));
 }
 
 async function read(filenames: string[]): Promise<RankTuple[]> {
