@@ -15,7 +15,7 @@ main().then(
 );
 
 async function main() {
-  // await fetchAndWriteFile();
+  await fetchAndWriteFile();
 
   const filenames = filterMonthly(await walk());
 
